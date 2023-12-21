@@ -1,46 +1,53 @@
-import { DataType, Table, Model, Column, AllowNull, PrimaryKey, AutoIncrement, Default, BelongsTo, HasMany, ForeignKey } from 'sequelize-typescript';
-import Question from './Question';
-import Comment from './Comment';
-import User from './User';
+import { DataType, Table, Model, Column, AllowNull, PrimaryKey, AutoIncrement, Default, BelongsTo, HasMany, ForeignKey } from 'sequelize-typescript'
+import Question from './Question'
+import Comment from './Comment'
+import User from './User'
 
-@Table({ tableName: "answer" })
+@Table({ tableName: 'answer' })
 class Answer extends Model {
-    
-    @PrimaryKey
-    @AutoIncrement
-    @Column
-    id: number;
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+    id: number
 
-    @AllowNull(false)
-    @Column(DataType.TEXT)
-    body: string;
+  @AllowNull(false)
+  @Column(DataType.TEXT)
+    body: string
 
-    @AllowNull(false)
-    @Default(0)
-    @Column
-    score: number;
+  @AllowNull(false)
+  @Default(0)
+  @Column
+    score: number
 
-    @AllowNull(false)
-    @Default(false)
-    @Column
-    accepted: boolean = false;
+  @AllowNull(false)
+  @Default(false)
+  @Column
+    accepted: boolean
 
-    @ForeignKey(() => Question)
-    @Column
-    question_id: number;
+  @ForeignKey(() => Question)
+  @AllowNull(false)
+  @Column({
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  })
+    question_id: number
 
-    @BelongsTo(() => Question)
-    Question: Question;
+  @BelongsTo(() => Question)
+    Question: Question
 
-    @HasMany(() => Comment)
-    Comments: Comment[];
+  @HasMany(() => Comment)
+    Comments: Comment[]
 
-    @ForeignKey(() => User)
-    @Column
-    user_id: number;
+  @ForeignKey(() => User)
+  @AllowNull(false)
+  @Column({
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+  })
+    user_id: number
 
-    @BelongsTo(() => User)
-    User: User;
+  @BelongsTo(() => User)
+    User: User
 }
 
-export default Answer;
+export default Answer

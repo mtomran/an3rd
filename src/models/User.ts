@@ -15,7 +15,7 @@ class User extends Model {
 
   @AllowNull(false)
   @Column
-  username: string = "";
+  username: string;
 
   @HasMany(() => Question)
   Questions: Question[] = [];

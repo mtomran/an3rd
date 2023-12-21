@@ -1,43 +1,41 @@
-import { Table, DataType, Model, Column, AutoIncrement, AllowNull, PrimaryKey, Default, BelongsTo, HasMany, ForeignKey } from 'sequelize-typescript';
-import User from './User';
-import Answer from './Answer';
-import Comment from './Comment';
+import { Table, DataType, Model, Column, AutoIncrement, AllowNull, PrimaryKey, Default, BelongsTo, HasMany, ForeignKey } from 'sequelize-typescript'
+import User from './User'
+import Answer from './Answer'
+import Comment from './Comment'
 
-@Table({ tableName: "question" })
+@Table({ tableName: 'question' })
 class Question extends Model {
-    
-    @PrimaryKey
-    @AutoIncrement
-    @Column
-    id: number;
+  @PrimaryKey
+  @AutoIncrement
+  @Column
+    id: number
 
-    @AllowNull(false)
-    @Column
-    title: string;
-    
-    @AllowNull(false)
-    @Column(DataType.TEXT)
-    body: string;
+  @AllowNull(false)
+  @Column
+    title: string
 
-    
-    @AllowNull(false)
-    @Default(0)
-    @Column
-    score: number;
+  @AllowNull(false)
+  @Column(DataType.TEXT)
+    body: string
 
-    @ForeignKey(() => User)
-    @Column
-    user_id: number;
+  @AllowNull(false)
+  @Default(0)
+  @Column
+    score: number
 
-    @BelongsTo(() => User)
-    User: User;
+  @ForeignKey(() => User)
+  @AllowNull(false)
+  @Column
+    user_id: number
 
-    @HasMany(() => Answer)
-    Answers: Answer[] = [];
+  @BelongsTo(() => User)
+    User: User
 
-    @HasMany(() => Comment)
-    Comments: Comment[] = [];
+  @HasMany(() => Answer)
+    Answers: Answer[] = []
+
+  @HasMany(() => Comment)
+    Comments: Comment[] = []
 }
 
-
-export default Question;
+export default Question
