@@ -1,13 +1,27 @@
 version: '3.8'
 
 services:
+  server:
+    build: "./server"
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=${DB_NAME}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "3000:3000"
+
+  client:
+    build: "./www"
+    ports:
+      - "8080:80"
+
   postgres:
     image: postgres:latest
-    container_name: postgres_container
     environment:
-      POSTGRES_DB: an3rd
-      POSTGRES_USER: apiuser
-      POSTGRES_PASSWORD: E@!VT8I*#btgd5Pd
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
       - "5432:5432"
     volumes:

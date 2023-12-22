@@ -7,7 +7,8 @@ function UserActivityComponent({ answer, user }) {
   const [showUserData, setShowUserData] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:3001/user') // Replace with your actual API URL
+    const { REACT_APP_SERVER_HOST: host, REACT_APP_SERVER_PORT: port } = process.env;
+    fetch(`${host}:${port}/user`) // Replace with your actual API URL
       .then(response => response.json())
       .then(data => {
         setUsers(data.result);

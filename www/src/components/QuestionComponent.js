@@ -11,8 +11,9 @@ function QuestionComponent({ question, user }) {
   };
 
   const updateAnswer = async () => {
+    const { REACT_APP_SERVER_HOST: host, REACT_APP_SERVER_PORT: port } = process.env;
     try { 
-      const response = await fetch(`http://localhost:3001/answer`, {
+      const response = await fetch(`${host}:${port}/answer`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

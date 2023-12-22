@@ -1,17 +1,17 @@
-import app, {startApp} from "./api/app"
-import sequelize, {testConnection} from "./sequelize";
-import { loadData } from "./loadData";
-import User from './models/User';
-import Comment from "./models/Comment";
-import Answer from "./models/Answer";
-import Question from "./models/Question";
+import { startApp } from './api/app'
+import sequelize, { testConnection } from './sequelize'
+import { loadData } from './loadData'
+import User from './models/User'
+import Comment from './models/Comment'
+import Answer from './models/Answer'
+import Question from './models/Question'
 
-async function start () {
-  await testConnection();
-  sequelize.addModels([User, Comment, Answer, Question]);
-  await sequelize.sync({ force: true });
-  await loadData(); 
-  startApp();
+async function start (): Promise<void> {
+  await testConnection()
+  sequelize.addModels([User, Comment, Answer, Question])
+  await sequelize.sync({ force: true })
+  await loadData()
+  await startApp()
 }
 
 process
@@ -23,4 +23,4 @@ process
     process.exit(1)
   })
 
-start() 
+void start()

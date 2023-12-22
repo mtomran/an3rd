@@ -7,7 +7,8 @@ function QuestionListComponent({ userId }) {
 
   useEffect(() => {
     // Fetch the user data
-    fetch(`http://localhost:3001/question`)
+    const { REACT_APP_SERVER_HOST: host, REACT_APP_SERVER_PORT: port } = process.env;
+    fetch(`${host}:${port}/question`)
       .then(response => response.json())
       .then(data => {
         console.log(data)

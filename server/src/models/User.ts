@@ -1,30 +1,29 @@
-import { Table, Column, Model, HasMany, PrimaryKey, AutoIncrement, AllowNull } from 'sequelize-typescript';
+import { Table, Column, Model, HasMany, PrimaryKey, AutoIncrement, AllowNull } from 'sequelize-typescript'
 import Question from './Question'
-import Comment from './Comment';
-import Answer from './Answer';
+import Comment from './Comment'
+import Answer from './Answer'
 
 @Table({
-  tableName: "user",
+  tableName: 'user'
 })
 class User extends Model {
-  
   @PrimaryKey
   @AutoIncrement
   @Column
-  id: number = 0;
+    id: number = 0
 
   @AllowNull(false)
   @Column
-  username: string;
+    username: string
 
   @HasMany(() => Question)
-  Questions: Question[] = [];
+    Questions: Question[] = []
 
   @HasMany(() => Answer)
-  Answers: Answer[] = [];
+    Answers: Answer[] = []
 
   @HasMany(() => Comment)
-  Comments: Comment[]  = [];
+    Comments: Comment[] = []
 }
- 
-export default User;
+
+export default User

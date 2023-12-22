@@ -13,7 +13,8 @@ function UserDataComponent({ userId }) {
 
   useEffect(() => {
     // Fetch the user data
-    fetch(`http://localhost:3001/user/${userId}`)
+    const { REACT_APP_SERVER_HOST: host, REACT_APP_SERVER_PORT: port } = process.env;
+    fetch(`${host}:${port}/user/${userId}`)
       .then(response => response.json())
       .then(data => {
         console.log(data)
