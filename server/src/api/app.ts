@@ -4,13 +4,16 @@ import questionRoutes from './routes/question.route'
 import answerRoutes from './routes/answer.route'
 import commentRoutes from './routes/comment.route'
 import errorHandler from './middlewares/errorHandler'
+import 'dotenv/config'
+import cors from 'cors';
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 export async function startApp() {
   app.use(express.json());
+  app.use(cors())
 
   app.get('/', (req: Request, res: Response) => {
     res.send('Welcome to an3rd API!');

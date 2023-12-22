@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize-typescript'
-import dotenv from 'dotenv'
+import 'dotenv/config'
 
-dotenv.config()
 
 // Database connection details
 const host = process.env.DB_HOST

@@ -9,8 +9,8 @@ import Question from "./models/Question";
 async function start () {
   await testConnection();
   sequelize.addModels([User, Comment, Answer, Question]);
-  // await sequelize.sync({ force: true });
-  // await loadData(); 
+  await sequelize.sync({ force: true });
+  await loadData(); 
   startApp();
 }
 
