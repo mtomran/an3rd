@@ -2,17 +2,17 @@ version: '3.8'
 
 services:
   server:
-    image: mtomran2/an3rd_server:latest
+    build: "./server"
     environment:
       - DB_HOST=postgres
       - DB_NAME=${DB_NAME}
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
     ports:
-      - "3001:3000"
+      - "3000:3000"
 
   client:
-    image: mtomran2/an3rd_client:latest
+    build: "./www"
     ports:
       - "8080:80"
 
