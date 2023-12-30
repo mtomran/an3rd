@@ -22,6 +22,10 @@ Build Docker images from the source with this command:
 
 docker-compose -f docker-compose.build.yml up -d
 
+### View the UI
+
+Navigate to `http://localhost:8080/` to view the UI.
+
 ## Application Structure
 
 The application is divided into two parts:

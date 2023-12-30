@@ -7,10 +7,21 @@ import Answer from './models/Answer'
 import Question from './models/Question'
 
 async function start (): Promise<void> {
+  // testing database connection
   await testConnection()
+
+  // letting Sequelize know about the models
   sequelize.addModels([User, Comment, Answer, Question])
+
+  // force sync the database with the model
+  // Note: this is for development only as it will drop existing tables if needed
+  //  For proper environment, proper migration mechanism is recommended
   await sequelize.sync({ force: true })
+
+  // initialize the database using the json file provided
   await loadData()
+
+  // start the server
   await startApp()
 }
 

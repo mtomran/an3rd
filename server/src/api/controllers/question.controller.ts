@@ -6,7 +6,7 @@ import Question from '../../models/Question'
 
 const getAllQuestions = async (req: Request, res: Response): Promise<void> => {
   const questions = await Question.findAll({
-    include: [{ model: Answer, include:[{ model: User }, {model: Comment, include: [{ model: User }]}] }, { model: User }, { model: Comment, include: [{ model: User }]}]
+    include: [{ model: Answer, include: [{ model: User }, { model: Comment, include: [{ model: User }] }] }, { model: User }, { model: Comment, include: [{ model: User }] }]
   })
   res.json({ result: questions })
 }

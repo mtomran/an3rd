@@ -1,3 +1,3 @@
 # an3rd Backend
 
-A REST API built on top of a Postgres Database using Sequelize ORM.
+A REST API, utilizing Sequelize ORM for streamlined interactions with a Postgres Database.
